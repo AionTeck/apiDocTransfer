@@ -33,4 +33,4 @@ run: ## Запустить app в работающем контейнере: mak
 	$(COMPOSE) exec -d $(SERVICE) sh -c 'exec ./app "$$@" >/proc/1/fd/1 2>/proc/1/fd/2' app $(ARGS)
 
 stop: ## Корректно остановить запущенный app (SIGINT, как Ctrl+C)
-	$(COMPOSE) exec $(SERVICE) pkill -INT -x app || echo "app не запущен"
+	$(COMPOSE) exec $(SERVICE) pkill -INT -f '^\./app( |$$)' || echo "app не запущен"

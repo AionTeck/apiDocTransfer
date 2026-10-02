@@ -4,19 +4,21 @@ import (
 	"errors"
 	"fmt"
 	"os"
+	"time"
 
 	"github.com/caarlos0/env/v11"
 )
 
 type AppConfig struct {
-	LogLevel               string `env:"LOG_LEVEL" envDefault:"debug"`
-	PostmanApiKey          string `env:"POSTMAN_API_KEY" envDefault:""`
-	PostmanWorkspaceID     string `env:"POSTMAN_WORKSPACE_ID" envDefault:""`
-	PostmanCollectionID    string `env:"POSTMAN_COLLECTION_ID" envDefault:""`
-	SwaggerAuthToken       string `env:"SWAGGER_AUTH_TOKEN" envDefault:""`
-	SwaggerDomainPrefix    string `env:"SWAGGER_DOMAIN_PREFIX" envDefault:"/"`
-	SwaggerOptionsHtmlPath string
-	Oas2pmPath             string
+	LogLevel                    string        `env:"LOG_LEVEL" envDefault:"debug"`
+	PostmanApiKey               string        `env:"POSTMAN_API_KEY" envDefault:""`
+	PostmanApiConnectionTimeout time.Duration `env:"POSTMAN_API_CONNECTION_TIMEOUT" envDefault:"60s"`
+	PostmanWorkspaceID          string        `env:"POSTMAN_WORKSPACE_ID" envDefault:""`
+	PostmanCollectionID         string        `env:"POSTMAN_COLLECTION_ID" envDefault:""`
+	SwaggerAuthToken            string        `env:"SWAGGER_AUTH_TOKEN" envDefault:""`
+	SwaggerDomainPrefix         string        `env:"SWAGGER_DOMAIN_PREFIX" envDefault:"/"`
+	SwaggerOptionsHtmlPath      string
+	Oas2pmPath                  string
 }
 
 func Load() (*AppConfig, error) {

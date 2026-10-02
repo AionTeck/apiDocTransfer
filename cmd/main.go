@@ -36,7 +36,7 @@ func main() {
 	}
 
 	postmanHttpClient := &http.Client{
-		Timeout: 60 * time.Second,
+		Timeout: appConfig.PostmanApiConnectionTimeout,
 	}
 
 	postmanClient := postman_client.NewPostmanClient(
@@ -48,6 +48,7 @@ func main() {
 	parser := parserpkg.NewParser(*appConfig, logger, client, postmanClient)
 	if err := parser.Parse(ctx); err != nil {
 		logger.Error("parse failed", zap.Error(err))
+		return
 	}
 	logger.Info("parsed successfully")
 }
