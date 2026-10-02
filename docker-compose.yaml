@@ -1,0 +1,11 @@
+services:
+  application:
+    container_name: app
+    build:
+      context: .
+      dockerfile: deploy/app/Dockerfile
+    env_file:
+      - .env
+    volumes:
+      - ./swagger_options.html:/app/swagger_options.html:ro
+    init: true
