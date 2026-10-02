@@ -1,0 +1,5 @@
+<select id="select">
+    <option value="some_api.yaml">antifraud</option>
+    <option value="some_2_api.yaml">api-model-builder</option>
+    <option value="some_3_api.yaml">bonuses</option>
+</select>
